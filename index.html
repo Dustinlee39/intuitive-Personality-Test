@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comprehensive Personality Assessment Tool for Clinical Use">
+    <title>Comprehensive Personality Assessment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .rating {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .rating input {
+            margin: 0 5px;
+        }
+        .progress {
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            background: #3498db;
+            height: 20px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+        }
+        .results {
+            display: none;
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Comprehensive Personality Assessment</h1>
+        <form id="assessmentForm">
+            <div class="progress">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <fieldset>
+                <legend>Cognitive Styles</legend>
+                <!-- 10 questions for Cognitive Styles -->
+                <div class="question">
+                    <label for="q1">I prefer thinking through a problem before making a decision.</label>
+                    <div class="rating">
+                        <input type="radio" name="q1" value="1"> Strongly Disagree
+                        <input type="radio" name="q1" value="2"> Disagree
+                        <input type="radio" name="q1" value="3"> Neutral
+                        <input type="radio" name="q1" value="4"> Agree
+                        <input type="radio" name="q1" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q2">I enjoy solving complex problems that challenge my mind.</label>
+                    <div class="rating">
+                        <input type="radio" name="q2" value="1"> Strongly Disagree
+                        <input type="radio" name="q2" value="2"> Disagree
+                        <input type="radio" name="q2" value="3"> Neutral
+                        <input type="radio" name="q2" value="4"> Agree
+                        <input type="radio" name="q2" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q3">I often rely on logic rather than emotions in decision-making.</label>
+                    <div class="rating">
+                        <input type="radio" name="q3" value="1"> Strongly Disagree
+                        <input type="radio" name="q3" value="2"> Disagree
+                        <input type="radio" name="q3" value="3"> Neutral
+                        <input type="radio" name="q3" value="4"> Agree
+                        <input type="radio" name="q3" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q4">I value innovative and creative thinking over traditional methods.</label>
+                    <div class="rating">
+                        <input type="radio" name="q4" value="1"> Strongly Disagree
+                        <input type="radio" name="q4" value="2"> Disagree
+                        <input type="radio" name="q4" value="3"> Neutral
+                        <input type="radio" name="q4" value="4"> Agree
+                        <input type="radio" name="q4" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q5">I like to gather all available information before forming an opinion.</label>
+                    <div class="rating">
+                        <input type="radio" name="q5" value="1"> Strongly Disagree
+                        <input type="radio" name="q5" value="2"> Disagree
+                        <input type="radio" name="q5" value="3"> Neutral
+                        <input type="radio" name="q5" value="4"> Agree
+                        <input type="radio" name="q5" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q6">I tend to approach tasks systematically rather than improvising.</label>
+                    <div class="rating">
+                        <input type="radio" name="q6" value="1"> Strongly Disagree
+                        <input type="radio" name="q6" value="2"> Disagree
+                        <input type="radio" name="q6" value="3"> Neutral
+                        <input type="radio" name="q6" value="4"> Agree
+                        <input type="radio" name="q6" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q7">I find abstract concepts and theories engaging and stimulating.</label>
+                    <div class="rating">
+                        <input type="radio" name="q7" value="1"> Strongly Disagree
+                        <input type="radio" name="q7" value="2"> Disagree
+                        <input type="radio" name="q7" value="3"> Neutral
+                        <input type="radio" name="q7" value="4"> Agree
+                        <input type="radio" name="q7" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q8">I am more comfortable when things are clearly defined and structured.</label>
+                    <div class="rating">
+                        <input type="radio" name="q8" value="1"> Strongly Disagree
+                        <input type="radio" name="q8" value="2"> Disagree
+                        <input type="radio" name="q8" value="3"> Neutral
+                        <input type="radio" name="q8" value="4"> Agree
+                        <input type="radio" name="q8" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q9">I like to analyze situations from multiple perspectives before drawing conclusions.</label>
+                    <div class="rating">
+                        <input type="radio" name="q9" value="1"> Strongly Disagree
+                        <input type="radio" name="q9" value="2"> Disagree
+                        <input type="radio" name="q9" value="3"> Neutral
+                        <input type="radio" name="q9" value="4"> Agree
+                        <input type="radio" name="q9" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q10">I prefer working with concepts over concrete details.</label>
+                    <div class="rating">
+                        <input type="radio" name="q10" value="1"> Strongly Disagree
+                        <input type="radio" name="q10" value="2"> Disagree
+                        <input type="radio" name="q10" value="3"> Neutral
+                        <input type="radio" name="q10" value="4"> Agree
+                        <input type="radio" name="q10" value="5"> Strongly Agree
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Emotional Patterns</legend>
+                <!-- Questions q11 to q30 go here, following the same structure -->
+
+                <!-- Emotional Patterns Questions q11 to q30 -->
+                <div class="question">
+                    <label for="q11">I often feel anxious in social situations.</label>
+                    <div class="rating">
+                        <input type="radio" name="q11" value="1"> Strongly Disagree
+                        <input type="radio" name="q11" value="2"> Disagree
+                        <input type="radio" name="q11" value="3"> Neutral
+                        <input type="radio" name="q11" value="4"> Agree
+                        <input type="radio" name="q11" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q12">I find it challenging to manage my emotions when stressed.</label>
+                    <div class="rating">
+                        <input type="radio" name="q12" value="1"> Strongly Disagree
+                        <input type="radio" name="q12" value="2"> Disagree
+                        <input type="radio" name="q12" value="3"> Neutral
+                        <input type="radio" name="q12" value="4"> Agree
+                        <input type="radio" name="q12" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q13">I often reflect on my feelings and what they mean.</label>
+                    <div class="rating">
+                        <input type="radio" name="q13" value="1"> Strongly Disagree
+                        <input type="radio" name="q13" value="2"> Disagree
+                        <input type="radio" name="q13" value="3"> Neutral
+                        <input type="radio" name="q13" value="4"> Agree
+                        <input type="radio" name="q13" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q14">I experience emotions intensely, whether positive or negative.</label>
+                    <div class="rating">
+                        <input type="radio" name="q14" value="1"> Strongly Disagree
+                        <input type="radio" name="q14" value="2"> Disagree
+                        <input type="radio" name="q14" value="3"> Neutral
+                        <input type="radio" name="q14" value="4"> Agree
+                        <input type="radio" name="q14" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q15">I am quick to feel empathy for others.</label>
+                    <div class="rating">
+                        <input type="radio" name="q15" value="1"> Strongly Disagree
+                        <input type="radio" name="q15" value="2"> Disagree
+                        <input type="radio" name="q15" value="3"> Neutral
+                        <input type="radio" name="q15" value="4"> Agree
+                        <input type="radio" name="q15" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <!-- Continue similarly for questions q16 to q30 -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Social Dynamics</legend>
+                <!-- Social Dynamics Questions q31 to q50 go here, following the same structure -->
+
+                <!-- Social Dynamics Questions q31 to q50 -->
+                <div class="question">
+                    <label for="q31">I find it easy to make new friends.</label>
+                    <div class="rating">
+                        <input type="radio" name="q31" value="1"> Strongly Disagree
+                        <input type="radio" name="q31" value="2"> Disagree
+                        <input type="radio" name="q31" value="3"> Neutral
+                        <input type="radio" name="q31" value="4"> Agree
+                        <input type="radio" name="q31" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q32">I enjoy being the center of attention in social settings.</label>
+                    <div class="rating">
+                        <input type="radio" name="q32" value="1"> Strongly Disagree
+                        <input type="radio" name="q32" value="2"> Disagree
+                        <input type="radio" name="q32" value="3"> Neutral
+                        <input type="radio" name="q32" value="4"> Agree
+                        <input type="radio" name="q32" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q33">I prefer one-on-one conversations over group discussions.</label>
+                    <div class="rating">
+                        <input type="radio" name="q33" value="1"> Strongly Disagree
+                        <input type="radio" name="q33" value="2"> Disagree
+                        <input type="radio" name="q33" value="3"> Neutral
+                        <input type="radio" name="q33" value="4"> Agree
+                        <input type="radio" name="q33" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q34">I tend to adapt quickly to new social environments.</label>
+                    <div class="rating">
+                        <input type="radio" name="q34" value="1"> Strongly Disagree
+                        <input type="radio" name="q34" value="2"> Disagree
+                        <input type="radio" name="q34" value="3"> Neutral
+                        <input type="radio" name="q34" value="4"> Agree
+                        <input type="radio" name="q34" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q35">I often find myself mediating conflicts between others.</label>
+                    <div class="rating">
+                        <input type="radio" name="q35" value="1"> Strongly Disagree
+                        <input type="radio" name="q35" value="2"> Disagree
+                        <input type="radio" name="q35" value="3"> Neutral
+                        <input type="radio" name="q35" value="4"> Agree
+                        <input type="radio" name="q35" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <!-- Continue similarly for questions q36 to q50 -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Personality Variants</legend>
+                <!-- Personality Variants Questions q51 to q60 go here, following the same structure -->
+
+                <!-- Personality Variants Questions q51 to q60 -->
+                <div class="question">
+                    <label for="q51">I am easily affected by changes in my environment.</label>
+                    <div class="rating">
+                        <input type="radio" name="q51" value="1"> Strongly Disagree
+                        <input type="radio" name="q51" value="2"> Disagree
+                        <input type="radio" name="q51" value="3"> Neutral
+                        <input type="radio" name="q51" value="4"> Agree
+                        <input type="radio" name="q51" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q52">I tend to overthink decisions before making them.</label>
+                    <div class="rating">
+                        <input type="radio" name="q52" value="1"> Strongly Disagree
+                        <input type="radio" name="q52" value="2"> Disagree
+                        <input type="radio" name="q52" value="3"> Neutral
+                        <input type="radio" name="q52" value="4"> Agree
+                        <input type="radio" name="q52" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q53">I am confident in my ability to handle unexpected challenges.</label>
+                    <div class="rating">
+                        <input type="radio" name="q53" value="1"> Strongly Disagree
+                        <input type="radio" name="q53" value="2"> Disagree
+                        <input type="radio" name="q53" value="3"> Neutral
+                        <input type="radio" name="q53" value="4"> Agree
+                        <input type="radio" name="q53" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q54">I find it difficult to remain calm under pressure.</label>
+                    <div class="rating">
+                        <input type="radio" name="q54" value="1"> Strongly Disagree
+                        <input type="radio" name="q54" value="2"> Disagree
+                        <input type="radio" name="q54" value="3"> Neutral
+                        <input type="radio" name="q54" value="4"> Agree
+                        <input type="radio" name="q54" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q55">I often question my own decisions and choices.</label>
+                    <div class="rating">
+                        <input type="radio" name="q55" value="1"> Strongly Disagree
+                        <input type="radio" name="q55" value="2"> Disagree
+                        <input type="radio" name="q55" value="3"> Neutral
+                        <input type="radio" name="q55" value="4"> Agree
+                        <input type="radio" name="q55" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q56">I tend to stay composed even in tense situations.</label>
+                    <div class="rating">
+                        <input type="radio" name="q56" value="1"> Strongly Disagree
+                        <input type="radio" name="q56" value="2"> Disagree
+                        <input type="radio" name="q56" value="3"> Neutral
+                        <input type="radio" name="q56" value="4"> Agree
+                        <input type="radio" name="q56" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q57">I feel the need to justify my actions to others.</label>
+                    <div class="rating">
+                        <input type="radio" name="q57" value="1"> Strongly Disagree
+                        <input type="radio" name="q57" value="2"> Disagree
+                        <input type="radio" name="q57" value="3"> Neutral
+                        <input type="radio" name="q57" value="4"> Agree
+                        <input type="radio" name="q57" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q58">I recover quickly from setbacks.</label>
+                    <div class="rating">
+                        <input type="radio" name="q58" value="1"> Strongly Disagree
+                        <input type="radio" name="q58" value="2"> Disagree
+                        <input type="radio" name="q58" value="3"> Neutral
+                        <input type="radio" name="q58" value="4"> Agree
+                        <input type="radio" name="q58" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q59">I find myself constantly seeking approval from others.</label>
+                    <div class="rating">
+                        <input type="radio" name="q59" value="1"> Strongly Disagree
+                        <input type="radio" name="q59" value="2"> Disagree
+                        <input type="radio" name="q59" value="3"> Neutral
+                        <input type="radio" name="q59" value="4"> Agree
+                        <input type="radio" name="q59" value="5"> Strongly Agree
+                    </div>
+                </div>
+                <div class="question">
+                    <label for="q60">I remain consistent in my behavior, even in new situations.</label>
+                    <div class="rating">
+                        <input type="radio" name="q60" value="1"> Strongly Disagree
+                        <input type="radio" name="q60" value="2"> Disagree
+                        <input type="radio" name="q60" value="3"> Neutral
+                        <input type="radio" name="q60" value="4"> Agree
+                        <input type="radio" name="q60" value="5"> Strongly Agree
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="button-group">
+                <button type="button" onclick="saveProgress()">Save Progress</button>
+                <button type="button" onclick="calculateResults()">Submit</button>
+                <button type="button" onclick="clearData()">Clear Data</button>
+            </div>
+        </form>
+
+        <div class="results" id="results">
+            <h2>Results Summary</h2>
+            <p id="mbtiResult">MBTI Type: <span></span></p>
+            <p id="ambiversionResult">Ambiversion Status: <span></span></p>
+            <p id="socialRoleResult">Social Role: <span></span></p>
+            <p id="variantResult">Variant: <span></span></p>
+            <div class="chart-container">
+                <canvas id="resultsChart"></canvas>
+            </div>
+            <button onclick="printResults()">Print Results</button>
+            <button onclick="downloadPDF()">Download Report</button>
+        </div>
+    </div>
+
+    <script>
+        const totalQuestions = 60;
+        function updateProgress() {
+            const answered = document.querySelectorAll('input[type="radio"]:checked').length;
+            const progress = (answered / totalQuestions) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+        document.querySelectorAll('input[type="radio"]').forEach(input => {
+            input.addEventListener('change', updateProgress);
+        });
+
+        function saveProgress() {
+            const formData = new FormData(document.getElementById('assessmentForm'));
+            for (const [key, value] of formData.entries()) {
+                localStorage.setItem(key, value);
+            }
+            alert('Progress saved!');
+        }
+
+        function loadProgress() {
+            const inputs = document.querySelectorAll('input[type="radio"]');
+            inputs.forEach(input => {
+                const savedValue = localStorage.getItem(input.name);
+                if (savedValue && input.value === savedValue) {
+                    input.checked = true;
+                }
+            });
+            updateProgress();
+        }
+        window.onload = loadProgress;
+
+        function clearData() {
+            localStorage.clear();
+            document.getElementById('assessmentForm').reset();
+            updateProgress();
+            alert('Data cleared!');
+        }
+
+        function calculateResults() {
+            const responses = {};
+            document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+                responses[input.name] = parseInt(input.value);
+            });
+
+            if (Object.keys(responses).length < totalQuestions) {
+                alert('Please answer all questions before submitting.');
+                return;
+            }
+
+            const result = calculateMBTI(responses);
+            document.getElementById('mbtiResult').querySelector('span').textContent = result.mbtiType;
+            document.getElementById('ambiversionResult').querySelector('span').textContent = result.ambiversionStatus;
+            document.getElementById('socialRoleResult').querySelector('span').textContent = result.socialRole;
+            document.getElementById('variantResult').querySelector('span').textContent = result.variant;
+            document.getElementById('results').style.display = 'block';
+            renderChart(result);
+        }
+
+        function calculateMBTI(responses) {
+            let introversion = 0, extraversion = 0, thinking = 0, feeling = 0, judging = 0, perceiving = 0;
+            for (let i = 1; i <= 20; i++) {
+                if (responses[`q${i}`] <= 3) introversion += responses[`q${i}`];
+                else extraversion += responses[`q${i}`];
+            }
+            for (let i = 21; i <= 40; i++) {
+                if (responses[`q${i}`] <= 3) thinking += responses[`q${i}`];
+                else feeling += responses[`q${i}`];
+            }
+            for (let i = 41; i <= 60; i++) {
+                if (responses[`q${i}`] <= 3) judging += responses[`q${i}`];
+                else perceiving += responses[`q${i}`];
+            }
+
+            const mbtiType = `${introversion > extraversion ? 'I' : 'E'}${thinking > feeling ? 'T' : 'F'}${judging > perceiving ? 'J' : 'P'}`;
+            const ambiversionStatus = Math.abs(introversion - extraversion) < 10 ? 'Ambivert' : (introversion > extraversion ? 'Introvert' : 'Extravert');
+            const socialRole = determineSocialRole(introversion, extraversion, thinking, feeling, judging, perceiving);
+            const variant = responses['q51'] > 3 ? 'Turbulent' : 'Assertive';
+
+            return {
+                mbtiType,
+                ambiversionStatus,
+                socialRole,
+                variant
+            };
+        }
+
+        function determineSocialRole(introversion, extraversion, thinking, feeling, judging, perceiving) {
+            if (extraversion > introversion && thinking > feeling) {
+                return 'Alpha';
+            } else if (introversion > extraversion && feeling > thinking) {
+                return 'Sigma';
+            } else if (introversion > extraversion && thinking > feeling) {
+                return 'Beta';
+            } else {
+                return 'Gamma';
+            }
+        }
+
+        function renderChart(result) {
+            const ctx = document.getElementById('resultsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Introversion', 'Extraversion', 'Thinking', 'Feeling', 'Judging', 'Perceiving'],
+                    datasets: [{
+                        label: 'Personality Traits',
+                        data: [
+                            result.mbtiType.includes('I') ? 70 : 30,
+                            result.mbtiType.includes('E') ? 70 : 30,
+                            result.mbtiType.includes('T') ? 70 : 30,
+                            result.mbtiType.includes('F') ? 70 : 30,
+                            result.mbtiType.includes('J') ? 70 : 30,
+                            result.mbtiType.includes('P') ? 70 : 30
+                        ],
+                        backgroundColor: 'rgba(52, 152, 219, 0.4)',
+                        borderColor: '#3498db',
+                        pointBackgroundColor: '#3498db'
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function printResults() {
+            window.print();
+        }
+
+        function downloadPDF() {
+            const content = document.querySelector('.results').innerHTML;
+            const printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write('<html><head><title>Assessment Results</title></head><body>');
+            printWindow.document.write(content);
+            printWindow.document.write('</body></html>');
+            printWindow.document.close();
+            printWindow.print();
+        }
+    </script>
+</body>
+</html>
